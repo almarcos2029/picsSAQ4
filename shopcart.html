@@ -90,6 +90,25 @@ a{
   margin-right: 10px;
   transform: scale(1.2);
 }
+#srchbttnordr2{
+  width: 150px;
+  height: 57px;
+  border-radius: 10px;
+  border: 3px solid lightgrey;
+  margin-top: 30px;
+  margin-right: 10px;
+  margin-left: 10px;
+  transition: background-color 0.2s, color 0.2s, transform 0.2s;
+}
+#srchbttnordr2:hover{
+  background-color: #ffa246;
+  color: white;
+  width: 150px;
+  border-radius: 10px;
+  border: 3px solid #ffa246;
+  margin-right: 10px;
+  transform: scale(1.2);
+}
 #drpdwn{
   margin-top: 5px;
   display: none;
@@ -230,7 +249,7 @@ a{
   height: 100%;
   padding: 20px;
 }
-#name{
+#cust_name{
   width: 445px;
   height: 57px;
   border-radius: 10px;
@@ -239,7 +258,7 @@ a{
   padding-left: 5px;
   padding-right: 5px;
 }
-#email{
+#cust_email{
   width: 445px;
   height: 57px;
   border-radius: 10px;
@@ -248,7 +267,7 @@ a{
   padding-left: 5px;
   padding-right: 5px;
 }
-#address{
+#cust_addr{
   width: 900px;
   height: 57px;
   border-radius: 10px;
@@ -306,7 +325,7 @@ footer{
         <h1 style="margin-bottom: -10px;">Marcos' Essentials<i class="fa-solid fa-star"></i></h1>
         <hr>
         </div>
-        <div id="lnkbr" class="d-flex"><div><p style="font-size: 24px;"><a href="index.html" id="lnkfp"> Home </a></p></div><div id="lnkfpdrp"><p style="font-size: 24px;"><a href="index.html#dvmddlttl" id="lnkfp2">Products</a></p>
+        <div id="lnkbr" class="d-flex"><div><p style="font-size: 24px;"><a href="index.html" id="lnkfp"> Home </a></p></div><div id="lnkfpdrp"><p style="font-size: 24px;"><a href="#dvmddlttl" id="lnkfp2">Products</a></p>
     <div id="drpdwn">
       <a href="index.html#dvmddl"><p style="font-size: 16px;">Furniture</p></a>
       <a href="index.html#dvmddl2"><p style="font-size: 16px;">Appliances</p></a>
@@ -334,20 +353,20 @@ footer{
           <form id="checkoutForm" action="http://52.74.133.173/cs3/checkout.php" method="POST">
             <div class="mb-3 d-flex">
               <div>
-        <label for="name" class="form-label" style="font-size: 24px;" id="hvrtxt3">Name <i class="fa-solid fa-user"></i></label>
-        <input id="name" name="name" type="text" class="form-control" placeholder="Last Name, First Name, M.I.">
+        <label for="cust_name" class="form-label" style="font-size: 24px;" id="hvrtxt3">Name <i class="fa-solid fa-user"></i></label>
+        <input id="cust_name" name="cust_name" type="text" class="form-control" placeholder="Last Name, First Name, M.I." required>
               </div>
               <div>
-        <label for="email" class="form-label" style="font-size: 24px;" id="hvrtxt4">Email <i class="fa-solid fa-at"></i></label>
-        <input id="email" name="email" type="text" class="form-control" placeholder="Email">
+        <label for="cust_email" class="form-label" style="font-size: 24px;" id="hvrtxt4">Email <i class="fa-solid fa-at"></i></label>
+        <input id="cust_email" name="cust_email" type="text" class="form-control" placeholder="Email" required>
               </div>
             </div>
             <div>
-        <label for="address" class="form-label" style="font-size: 24px;" id="hvrtxt5">Address <i class="fa-solid fa-house"></i></label>
-        <input id="address" name="address" type="text" class="form-control" placeholder="House number, Barangay, Municipality/City, Province, Country">
+        <label for="cust_addr" class="form-label" style="font-size: 24px;" id="hvrtxt5">Address <i class="fa-solid fa-house"></i></label>
+        <input id="cust_addr" name="cust_addr" type="text" class="form-control" placeholder="House number, Barangay, Municipality/City, Province, Country" required>
             </div>
-        <input type="hidden" name="cart" id="cartInput">
-        <button type="button" class="btn" id="srchbttnordr" onclick="submitCart()" style="padding: 15px;">Place Order</button>
+        <input type="hidden" name="cust_order" id="cust_order">
+        <button type="submit" class="btn" id="srchbttnordr2" style="padding: 15px;">Place Order</button>
           </form>
           </div>
           </div>
@@ -357,12 +376,23 @@ footer{
   <p style="font-size: 16px;"> © 2026 De Lara, Marcos, Cruz. All Rights Reserved.</p>
 </footer>
     <script>
-        function getPrice(value) {
-  if (typeof value === "number") return value;
-  if (!value) return 0;
-  const cleaned = String(value).replace(/[^\d]/g, "");
-  return Number(cleaned) || 0;
-}
+      document.getElementById("checkoutForm").addEventListener("submit", function (e) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  let formatted = cart.map(item => ({
+    prod_name: item.name || "Item",
+    prod_price: Number(String(item.price).replace(/[^\d]/g, "")) || 0
+  }));
+
+  document.getElementById("cust_order").value = JSON.stringify(formatted);
+});
+
+      function getPrice(value) {
+        if (typeof value === "number") return value;
+        if (!value) return 0;
+        const cleaned = String(value).replace(/[^\d]/g, "");
+        return Number(cleaned) || 0;
+      }
 
 function loadCart() {
   const container = document.getElementById("lstbx");
@@ -377,7 +407,7 @@ function loadCart() {
   `;
   const itemsContainer = document.getElementById("cart-items");
   if (cart.length === 0) {
-    itemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+    itemsContainer.innerHTML = "<p>You gonna buy anything or...?</p>";
     return;
   }
   let total = 0;
@@ -389,7 +419,7 @@ function loadCart() {
       <h5>${item.name || "Item"}</h5>
       <p>₱${price.toLocaleString()}</p>
       <button onclick="removeItem(${index})"
-        style="padding:8px; border:1px solid gray;">
+        class="btn" id="srchbttnordr">
         Remove
       </button>
       <hr>
@@ -406,15 +436,6 @@ function removeItem(index) {
   cart.splice(index, 1);
   localStorage.setItem("cart", JSON.stringify(cart));
   loadCart();
-}
-
-function submitCart() {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-  document.getElementById("cartInput").value =
-    JSON.stringify(cart);
-
-  document.getElementById("checkoutForm").submit();
 }
 
 loadCart();
