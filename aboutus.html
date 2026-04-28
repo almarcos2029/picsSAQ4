@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bpmf+Huninn&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        body{
+  font-family: "Bpmf Huninn", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  overflow-x: hidden;
+}
+
+
+header{
+background-color:#f6c492;
+color:white;
+justify-content:space-between;
+height:80px;
+position:sticky;
+top:0;
+z-index:999;
+display:flex;
+align-items:center;
+padding:0 20px;
+}
+
+.d-flex{
+display:flex;
+}
+
+a{
+text-decoration:none;
+}
+
+#lnkbr{
+margin-top:10px;
+width:500px;
+justify-content:space-between;
+}
+
+#lnkfp{
+  text-decoration: none;
+  color: white;
+  position: relative;
+  transition: border-bottom 1s, color 1.2s, background-color 1s, padding 1s, box-shadow 1s;
+}
+#lnkfp:hover{
+  color: black;
+  border-bottom: 8px black solid;
+  padding: 20px;
+  box-shadow: 0px 4px white;
+  background-color: #f6b092;
+}
+#lnkfp2{
+  text-decoration: none;
+  color: white;
+  position: relative;
+  transition: border-bottom 1s, color 1.2s, background-color 1s, padding 1s, box-shadow 1s;
+}
+#lnkfp2:hover{
+  color: black;
+  border-bottom: 8px black solid;
+  padding: 20px;
+  box-shadow: 0px 4px white;
+  background-color: #f6b092;
+}
+#lnkfp3{
+  text-decoration: none;
+  color: white;
+  position: relative;
+  transition: border-bottom 1s, color 1.2s, background-color 1s, padding 1s, box-shadow 1s;
+}
+#lnkfp3:hover{
+  color: black;
+  border-bottom: 8px black solid;
+  padding: 20px;
+  box-shadow: 0px 4px white;
+  background-color: #f6b092;
+}
+#lnkfp4{
+  text-decoration: none;
+  color: white;
+  position: relative;
+  transition: border-bottom 1s, color 1.2s, background-color 1s, padding 1s, box-shadow 1s;
+}
+#lnkfp4:hover{
+  color: black;
+  border-bottom: 8px black solid;
+  padding: 20px;
+  box-shadow: 0px 4px white;
+  background-color: #f6b092;
+}
+
+#drpdwn{
+display:none;
+position:absolute;
+background:white;
+padding:12px;
+border-radius:0 0 20px 20px;
+margin-top:5px;
+}
+
+#drpdwn a{
+  color: #ffa246;
+}
+
+#lnkfpdrp:hover #drpdwn{
+display:grid;
+width:141px;
+}
+
+#srchbx{
+width:200px;
+height:57px;
+border-radius:10px;
+border:1px;
+padding-left:5px;
+margin-right:5px;
+}
+
+#srchbttn{
+width:57px;
+height:57px;
+border-radius:10px;
+border:1px;
+margin-right:10px;
+transition:.2s;
+}
+
+#srchbttn:hover{
+background:#ffa246;
+transform:scale(1.2);
+color:white;
+}
+
+#srchbttn2{
+  color: black;
+  background-color: white;
+  padding: 18px;
+  width: 57px;
+  height: 57px;
+  border-radius: 10px;
+  border: 1px;
+  margin-right: 10px;
+  transition: background-color 0.2s, color 0.2s, transform 0.2s;
+}
+#srchbttn2:hover{
+  background-color: #ffa246;
+  color: white;
+  width: 57px;
+  border-radius: 10px;
+  border: 1px;
+  margin-right: 10px;
+  transform: scale(1.2);
+}
+
+hr{
+border:2px solid grey;
+}
+
+
+#dvfrnt{
+background-color:#f6c492;
+height:1000px;
+border-top:10px solid #ffefde;
+}
+
+#dvfrnt2{
+height:1000px;
+padding-top:40px;
+background-image:url("https://github.com/almarcos2029/picsSAQ4/blob/main/SAQ4-6.png?raw=true");
+background-size:cover;
+background-repeat:no-repeat;
+}
+
+
+.aboutcenter{
+text-align:center;
+margin-bottom:40px;
+}
+
+.abouthead{
+font-size:70px;
+color:white;
+margin-bottom:10px;
+}
+
+.meettitle{
+font-size:35px;
+color:white;
+}
+
+.abttext{
+color:white;
+width:800px;
+margin:auto;
+line-height:1;
+}
+
+
+.devrow{
+display:flex;
+justify-content:center;
+gap:40px;
+flex-wrap:wrap;
+}
+
+
+.devbox{
+background:white;
+width:320px;
+height:450px;
+padding:20px;
+border-radius:25px;
+text-align:center;
+box-shadow:0px 8px 20px rgba(0,0,0,.25);
+transition:transform 1s;
+}
+
+.devbox:hover{
+transform:scale(1.06);
+}
+
+/* BIG IMAGE */
+
+.devimg{
+width:200px;
+height:200px;
+object-fit:cover;
+border-radius:20px;
+border:5px solid #f6c492;
+margin-bottom:15px;
+}
+
+.devbox h2{
+color:#f6a04f;
+}
+
+.devbox h4{
+color:gray;
+}
+
+/* FOOTER (OG) */
+
+footer{
+padding:15px;
+background-color:gray;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+    </style>
+</head>
+<body>
+    <header class="py-2 ps-4 d-flex">
+        <div>
+        <h1 style="margin-bottom: -10px;">Marcos' Essentials</h1>
+        <hr>
+        </div>
+        <div id="lnkbr" class="d-flex"><div><p style="font-size: 24px;"><a href="index.html" id="lnkfp"> Home </a></p></div><div id="lnkfpdrp"><p style="font-size: 24px;"><a href="index.html#dvmddlttl" id="lnkfp2">Products</a></p>
+    <div id="drpdwn">
+      <a href="index.html#dvmddl"><p style="font-size: 16px;">Furniture</p></a>
+      <a href="index.html#dvmddl2"><p style="font-size: 16px;">Appliances</p></a>
+      <a href="index.html#dvmddl3"><p style="font-size: 16px;">Clothing</p></a>
+      <a href="index.html#dvmddl4"><p style="font-size: 16px;">Gadgets & Computers</p></a>
+      <a href="index.html#mre" style="color: white;" class="btn btn-secondary btn-block" id="mre2">More<i class="spinner-border spinner-border-sm"></i></a>
+          </div></div><div><p style="font-size: 24px;"><a href="index.html#flshdls" id="lnkfp3"> Flash deals </a></p></div><p style="font-size: 24px;"><a href="aboutus.html" id="lnkfp4"> About </a></p></div>
+        <div class='d-flex'>
+          <button id="srchbttn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <input type="text" id="srchbx" placeholder="Search...">
+        <a href="shopcart.html" id="srchbttn2"><i class="fa-solid fa-cart-shopping"></i></a>
+        </div>
+      </header>
+
+
+
+<section id="dvfrnt">
+
+<div id="dvfrnt2">
+
+<div class="aboutcenter">
+
+<p style="font-size: 32px;" class="abouthead" id="spclhvrtxt">About Us</p>
+
+<p style="font-size: 28px;" class="meettitle" id="spclhvrtxt2">Meet the Developers</p>
+
+<p class="abttext" id="spclhvrtxt3">
+This website was collaboratively designed and developed by
+Albert Jose Marcos, Godofredo De Lara III, and Jan Angela Ysobel Cruz.
+</p>
+
+</div>
+
+
+
+<div class="devrow">
+
+<div class="devbox" id="hvrtxt">
+<img src="https://github.com/jscruz2029/Groupmates4Q/blob/main/674246625_1369302718341923_1451984333403093125_n.jpg?raw=true" class="devimg" alt="AJ">
+
+<h2>Albert Jose Marcos</h2>
+<p style="font-size: 24px;">Front Page Developer</p>
+
+<p>
+Created the front page layout and contributed to the visual design.
+</p>
+</div>
+
+
+
+<div class="devbox" id="hvrtxt2">
+<img src="https://github.com/jscruz2029/Groupmates4Q/blob/main/IMG_2290.JPG?raw=true" class="devimg" alt="G3rd">
+
+<h2>Godofredo De Lara III</h2>
+<p style="font-size: 24px;">JavaScript Developer</p>
+
+<p>
+Developed JavaScript functionality and interactive features.
+</p>
+</div>
+
+
+
+<div class="devbox" id="hvrtxt3">
+<img src="https://github.com/jscruz2029/ysa/blob/main/Untitled%20design.png?raw=trueg" class="devimg" alt="Ysa">
+
+<h2>Jan Angela Ysobel Cruz</h2>
+<p style="font-size: 24px;">About Us Developer</p>
+
+<p>
+Designed and developed the About Us page structure and content.
+</p>
+</div>
+
+</div>
+<p style="font-size: 32px; text-align: center;color: white;margin-top: 10px;">References</p>
+<p style="font-size: 15px; text-align: center;color: white;">Loveseats. (2023, September 8). Mandaue Foam. https://mandauefoam.ph/collections/loveseats</p>
+<p style="font-size: 15px; text-align: center;color: white;">SM Appliance | Official Online Store. (n.d.). SM Appliance. https://www.smappliance.com/</p>
+<p style="font-size: 15px; text-align: center;color: white;">UNIQLO. (n.d.). UNIQLO. https://www.uniqlo.com/ph/en/</p>
+<p style="font-size: 15px; text-align: center;color: white;">Urban Gadgets. (n.d.). URBAN Gadgets | Official Online Store. https://urbangadgets.ph/</p>
+<p style="font-size: 15px; text-align: center;color: white;">1st Megasaver. (2026, January 29). Acer Apire Lite AL15-41P-R16X | 1st Megasaver. https://www.1stmegasaver.com.ph/product/acer-apire-lite-al15-41p-r16x/</p>
+</div>
+
+</section>
+
+
+
+<footer>
+<p style="font-size: 16px;">© 2026 De Lara, Marcos, Cruz. All Rights Reserved.</p>
+</footer>
+</body>
+</html>
