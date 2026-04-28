@@ -1240,15 +1240,22 @@ Designed for stunning Full HD visuals and immersive audio, this projector delive
     if (!localStorage.getItem("cart")) {
   localStorage.setItem("cart", JSON.stringify([]));
 }
+  
 const buttons = document.querySelectorAll(".card button");
+
 buttons.forEach(button => {
   button.addEventListener("click", () => {
     const card = button.closest(".card");
     const name = card.querySelector(".card-title").innerText;
-    const price = card.querySelector("p").innerText;
-    const img = card.querySelector("img").src;
+    let price = 0;
+    let priceElement = card.querySelector(".d-flex p");
+    if (!priceElement) {
+      priceElement = card.querySelector(".card-body p:last-of-type");
+    }
+    const rawPrice = priceElement.innerText;
+    price = parseInt(rawPrice.replace(/[^\d]/g, "")) || 0;
     let cart = JSON.parse(localStorage.getItem("cart"));
-    cart.push({ name, price, img });
+    cart.push({ name, price });
     localStorage.setItem("cart", JSON.stringify(cart));
     alert(name + " added to cart!");
   });
